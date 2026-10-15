@@ -2,7 +2,9 @@ import {
   aplicarActualizacion,
   avanzarPrimerIngreso,
   borrarPasskey,
+  borrarProductosDeEjemplo,
   cambiarIdiomaDeLaTienda,
+  cargarProductosDeEjemplo,
   cerrarSesion,
   completarIngreso,
   completarRegistroDePasskey,
@@ -75,6 +77,13 @@ export function armar(env: Env) {
     reloj: relojSistema,
     ids: generadorUlid,
   };
+  const depsProductos = { repo, categorias, imagenes, reloj: relojSistema, ids: generadorUlid };
+  // Las fotos de ejemplo son assets estáticos del Worker (public/ejemplos); el host no importa.
+  const leerFoto = async (ruta: string) => {
+    const res = await env.ASSETS.fetch(new URL(ruta, "https://assets.invalid"));
+    if (!res.ok) throw new Error(`Falta la foto de ejemplo ${ruta} (${res.status})`);
+    return new Uint8Array(await res.arrayBuffer());
+  };
   const depsActualizaciones: DepsActualizaciones = {
     conexion: crearRepositorioConexionGithubD1(env.DB),
     github: crearClienteGithub(),
@@ -88,7 +97,12 @@ export function armar(env: Env) {
     listarProductos: listarProductosPublicados({ repo }),
     listarTodosLosProductos: listarTodosLosProductos({ repo }),
     obtenerProducto: obtenerProducto({ repo }),
-    crearProducto: crearProducto({ repo, categorias, imagenes, reloj: relojSistema, ids: generadorUlid }),
+    crearProducto: crearProducto(depsProductos),
+    listarCategorias: () => categorias.listar(),
+    ejemplos: {
+      cargar: cargarProductosDeEjemplo({ ...depsProductos, tienda, leerFoto }),
+      borrar: borrarProductosDeEjemplo(depsProductos),
+    },
     acceso: {
       validarCodigoDeReclamo: validarCodigoDeReclamo(deps),
       iniciarRegistroDePasskey: iniciarRegistroDePasskey(deps),

@@ -15,6 +15,10 @@ export const en: Textos = {
     noEncontradaTitulo: "Page not found",
     productoNoEncontradoTitulo: "Product not found",
     productoNoEncontrado: "There's no published product at this address.",
+    categorias: "Categories",
+    todos: "All",
+    categoriaNoEncontradaTitulo: "Category not found",
+    categoriaNoEncontrada: "There are no published products in that category.",
   },
   preparando: {
     titulo: "We're getting the store ready",
@@ -214,6 +218,18 @@ export const en: Textos = {
     etiquetaFoto: "Photo",
     publicar: "Publish",
     saltear: "I'll add it later",
+  },
+  ejemplos: {
+    titulo: "Sample products",
+    introPrimerIngreso:
+      "Want to see how it looks first? Load sample products for a type of shop, with photos and categories. You can delete them all at once from your dashboard later.",
+    introPanel:
+      "Load sample products for a type of shop, with photos and categories, to see how your store looks. Delete them all at once whenever you want (your own products stay).",
+    etiquetaRubro: "Type of shop",
+    cargar: "Load sample products",
+    cargando: "Loading…",
+    borrar: "Delete the sample products",
+    confirmarBorrar: "Delete all sample products? Your own products stay.",
   },
   passkey: {
     crear: "Create my passkey",
