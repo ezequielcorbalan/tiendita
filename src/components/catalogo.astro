@@ -14,7 +14,7 @@ const actual = datos.categoriaActual?.slug;
 <h1>{datos.nombre}</h1>
 {
   datos.categorias.length > 0 && (
-    <nav aria-label={t.categorias}>
+    <nav class="categorias" aria-label={t.categorias}>
       <ul>
         <li>
           <a href="/" aria-current={actual === undefined ? "page" : undefined}>{t.todos}</a>
@@ -33,16 +33,16 @@ const actual = datos.categoriaActual?.slug;
   datos.productos.length === 0 ? (
     <p>{t.sinProductos}</p>
   ) : (
-    <ul>
+    <ul class="catalogo">
       {datos.productos.map((p) => (
-        <li>
+        <li class="producto">
           <a href={`/p/${p.slug}`}>
             {p.imagenes[0] && (
               <img src={p.imagenes[0].url} alt={p.nombre} width="160" height="160" loading="lazy" />
             )}
             <strong>{p.nombre}</strong>
           </a>
-          <span>{p.precioTexto}</span>
+          <span class="precio">{p.precioTexto}</span>
         </li>
       ))}
     </ul>
