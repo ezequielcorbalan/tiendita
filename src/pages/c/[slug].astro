@@ -2,7 +2,7 @@
 import { env } from "cloudflare:workers";
 import Catalogo from "../../components/catalogo.astro";
 import { textos } from "../../i18n";
-import Base from "../../layouts/base.astro";
+import Store from "../../layouts/store.astro";
 import { datosInicio } from "../../lib/paginas";
 
 const t = textos(Astro.locals.idioma);
@@ -13,17 +13,14 @@ if (!encontrada) Astro.response.status = 404;
 
 {
   datos.estado === "lista" && datos.categoriaActual ? (
-    <Base
-      titulo={`${datos.categoriaActual.nombre} · ${datos.nombre}`}
-      descripcion={t.tienda.productosDe(datos.nombre)}
-    >
+    <Store title={datos.categoriaActual.nombre} description={t.tienda.productosDe(datos.nombre)}>
       <script slot="head" type="application/ld+json" is:inline set:html={datos.jsonLd} />
       <Catalogo datos={datos} />
-    </Base>
+    </Store>
   ) : (
-    <Base titulo={`${t.tienda.categoriaNoEncontradaTitulo} · tiendita`}>
+    <Store title={t.tienda.categoriaNoEncontradaTitulo}>
       <h1>{t.tienda.categoriaNoEncontradaTitulo}</h1>
       <p>{t.tienda.categoriaNoEncontrada} <a href="/">{t.comun.volverALaTienda}</a></p>
-    </Base>
+    </Store>
   )
 }

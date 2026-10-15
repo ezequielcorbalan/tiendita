@@ -13,6 +13,9 @@ export const es = {
     sinPasskeys:
       "Este navegador no permite passkeys. Abrí tu tienda en el celular o actualizá el navegador y probá de nuevo.",
   },
+  storeLayout: {
+    madeWith: "Hecho con",
+  },
   tienda: {
     sinProductos: "Todavía no hay productos.",
     productosDe: (nombre: string) => `Productos de ${nombre}`,

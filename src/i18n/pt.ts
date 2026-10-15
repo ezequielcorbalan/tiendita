@@ -9,6 +9,9 @@ export const pt: Textos = {
     sinPasskeys:
       "Este navegador não aceita passkeys. Abra sua loja no celular ou atualize o navegador e tente de novo.",
   },
+  storeLayout: {
+    madeWith: "Feito com",
+  },
   tienda: {
     sinProductos: "Ainda não há produtos.",
     productosDe: (nombre: string) => `Produtos de ${nombre}`,

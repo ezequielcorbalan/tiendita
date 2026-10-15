@@ -647,6 +647,53 @@ p.precio {
   border-radius: 8px;
 }
 
+/* Encabezado y pie de la tienda pública (layouts/store.astro). */
+.barra-tienda {
+  background: var(--superficie);
+  border-bottom: 1px solid var(--borde);
+}
+
+.barra-tienda__contenido {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+}
+
+.barra-tienda__nombre {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--texto);
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.pie-tienda {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 1.5rem 1rem 2rem;
+  border-top: 1px solid var(--borde);
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+.pie-tienda p {
+  margin: 0;
+}
+
+textarea {
+  width: 100%;
+  min-height: 7rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--borde-campo);
+  border-radius: 12px;
+  background: var(--superficie);
+  color: var(--texto);
+  font: inherit;
+  resize: vertical;
+}
+
 /* Navegación por categoría de la tienda pública: chips, la actual rellena. */
 nav.categorias ul {
   display: flex;

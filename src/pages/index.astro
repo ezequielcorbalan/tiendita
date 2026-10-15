@@ -4,7 +4,7 @@ import Catalogo from "../components/catalogo.astro";
 import Preparando from "../components/preparando.astro";
 import PrimerArranque from "../components/primer-arranque.astro";
 import { textos } from "../i18n";
-import Base from "../layouts/base.astro";
+import Store from "../layouts/store.astro";
 import { datosInicio } from "../lib/paginas";
 
 const t = textos(Astro.locals.idioma).tienda;
@@ -17,9 +17,9 @@ const datos = await datosInicio(env, Astro.url.origin, Astro.locals.idioma);
   ) : datos.estado === "configurando" ? (
     <Preparando />
   ) : (
-    <Base titulo={datos.nombre} descripcion={t.productosDe(datos.nombre)}>
+    <Store description={t.productosDe(datos.nombre)}>
       <script slot="head" type="application/ld+json" is:inline set:html={datos.jsonLd} />
       <Catalogo datos={datos} />
-    </Base>
+    </Store>
   )
 }

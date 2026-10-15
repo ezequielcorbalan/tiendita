@@ -9,6 +9,9 @@ export const en: Textos = {
     sinPasskeys:
       "This browser doesn't support passkeys. Open your store on your phone or update your browser and try again.",
   },
+  storeLayout: {
+    madeWith: "Made with",
+  },
   tienda: {
     sinProductos: "No products yet.",
     productosDe: (nombre: string) => `Products from ${nombre}`,
