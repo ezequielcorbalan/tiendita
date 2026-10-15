@@ -849,6 +849,11 @@ li.cart-line input {
   margin-top: 1.25rem;
 }
 
+/* The heading gets focus by script (so screen readers land on the review); no ring on it. */
+.cart-review h2:focus {
+  outline: none;
+}
+
 .cart-review h3 {
   margin-top: 0;
 }
