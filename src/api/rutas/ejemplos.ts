@@ -16,7 +16,7 @@ export const rutasEjemplos = new Hono<EntornoApi>()
     soloElDueno,
     validar("json", z.object({ rubro: z.enum(RUBROS_DE_EJEMPLO, { message: "Rubro desconocido" }) })),
     async (c) => {
-      const r = await armar(c.env).ejemplos.cargar(c.req.valid("json").rubro);
+      const r = await armar(c.env).ejemplos.cargar(c.req.valid("json").rubro, new URL(c.req.url).origin);
       if (!r.ok) return responderErrorDeDominio(c, r.error);
       return c.json(r.valor);
     },
