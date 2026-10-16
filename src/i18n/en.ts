@@ -50,6 +50,8 @@ export const en: Texts = {
     msgAgree: "let's sort it out here",
   },
   storeLayout: {
+    /** The tutiendita.ar landing in this language: the footer links back to it. */
+    landingUrl: "https://tutiendita.ar/en/",
     madeWith: "Made with",
   },
   store: {
@@ -391,6 +393,7 @@ export const en: Texts = {
     bugfixTitle: "Update with fixes",
     bugfixText: (v: string) => `Version ${v} fixes bugs. We recommend updating.`,
     review: "See the update",
+    releaseNotesTitle: "What the update brings",
     failedConnection:
       "The connection didn't work (the link expired or isn't from this store). Try connecting again.",
     back: "Back to updates",
