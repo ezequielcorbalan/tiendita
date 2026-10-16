@@ -1,4 +1,7 @@
 {
+  // tutiendita: custom domain, managed from the panel (Configuración). workers.dev stays on: the panel and the passkeys still use it.
+  "routes": [{ "pattern": "demo.tutiendita.ar", "custom_domain": true }],
+  "workers_dev": true,
   // Generado por scripts/generar-tiendita.mjs del monorepo de tutiendita (los cambios conviene hacerlos allá).
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "tiendita",
