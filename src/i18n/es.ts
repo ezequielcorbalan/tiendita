@@ -1,4 +1,4 @@
-import type { ErrorCode, ProductStatus } from "../packages/core/index";
+import type { BrandColorId, ErrorCode, ProductStatus } from "../packages/core/index";
 
 /**
  * tiendita texts in Spanish (the default language). en.ts and pt.ts have the `Texts` type: if a key is
@@ -19,6 +19,9 @@ export const es = {
     add: "Agregar al carrito",
     added: "Agregado al carrito.",
     viewCart: "Ver carrito",
+    addedShort: "Agregado",
+    oneLess: "Una menos",
+    oneMore: "Una más",
     empty: "Tu carrito está vacío.",
     keepShopping: "Seguir comprando",
     quantity: "Cantidad",
@@ -68,7 +71,24 @@ export const es = {
     viewPhoto: (n: number, total: number) => `Ver foto ${n} de ${total}`,
 
     categories: "Categorías",
-    all: "Todos",
+    browse: "Qué estás buscando",
+    latest: "Novedades",
+    others: "Más productos",
+    viewAll: "Ver todo",
+    moreCategories: (n: number) => `Ver las ${n} categorías`,
+    fewerCategories: "Ver menos categorías",
+    from: "Desde",
+    howToBuy: "Cómo comprar",
+    buyWhatsapp: "Pedís por WhatsApp",
+    buyWhatsappText: "Armás el carrito y el pedido te llega listo para mandar.",
+    buyTransfer: "Pagás por transferencia",
+    buyTransferText: "Te pasamos el alias al confirmar el pedido.",
+    contactWhatsapp: "Escribinos por WhatsApp",
+    home: "Inicio",
+    breadcrumb: "Navegación",
+    consultWhatsapp: "Consultar por WhatsApp",
+    consultMessage: (name: string, url: string) => `Hola, quiero consultar por ${name}: ${url}`,
+    related: "También te puede gustar",
     categoryNotFoundTitle: "Categoría no encontrada",
     categoryNotFound: "No hay productos publicados en esa categoría.",
   },
@@ -126,6 +146,10 @@ export const es = {
     unsupported:
       "Este navegador no permite passkeys. Abrí tu tienda en el dispositivo donde creaste la passkey o actualizá el navegador.",
     lostMyDevice: "Perdí mi dispositivo",
+    keyTitle: "¿No podés usar passkeys?",
+
+    keyLabel: "Tu contraseña de acceso",
+    keyButton: "Entrar con contraseña",
   },
   recover: {
     pageTitle: "Recuperar el acceso",
@@ -156,6 +180,8 @@ export const es = {
     regenerate: "Generar un código de recuperación nuevo",
     ready: "Listo",
     backToPanel: "Volver al panel",
+    keyTitle: "Contraseña de acceso",
+    keyText: "Otra forma de entrar sin passkey. Si la cambiás, la anterior deja de servir.",
   },
   navPanel: {
     marker: "tiendita",
@@ -197,6 +223,26 @@ export const es = {
   },
   settings: {
     title: "Configuración",
+    identityTitle: "Tu tienda",
+    identityName: "Nombre",
+    identityTagline: "Frase de tu tienda",
+    identityTaglineHelp:
+      "Una frase corta que aparece debajo del nombre, por ejemplo: Tortas caseras en Villa Crespo",
+    identityLogo: "Logo",
+    identityLogoHelp: "JPG, PNG o WebP, mejor cuadrado. Se ve redondo al lado del nombre.",
+    identityRemoveLogo: "Quitar el logo",
+    identityColor: "Color de tu tienda",
+    identityColorHelp: "Botones, precios y detalles usan este color. Todos se leen bien, de día y de noche.",
+    // Palette ids stay in Spanish (stored values); the names are what people read.
+    identityColorNames: {
+      verde: "Verde",
+      terracota: "Terracota",
+      azul: "Azul",
+      ciruela: "Ciruela",
+      bordo: "Bordó",
+      pizarra: "Pizarra",
+    } satisfies Record<BrandColorId, string>,
+    identitySave: "Guardar",
     languageTitle: "Idioma",
     saveLanguage: "Guardar idioma",
     heartbeatTitle: "Tiendas activas",
@@ -471,6 +517,16 @@ export const es = {
   },
   passkey: {
     create: "Crear mi passkey",
+    useKey: "No puedo usar passkeys: usar contraseña",
+  },
+  password: {
+    newLabel: "Elegí una contraseña",
+    repeatLabel: "Repetí la contraseña",
+    rules:
+      "Mínimo 12 caracteres, con al menos 3 tipos: mayúsculas, minúsculas, números y símbolos. Sin palabras comunes como «password» o «tiendita». Si la olvidás, no vas a poder entrar sin passkey.",
+    mismatch: "Las dos contraseñas no coinciden.",
+    submit: "Guardar contraseña",
+    saved: "Listo, tu contraseña quedó guardada.",
   },
   recoveryCode: {
     title: "Tu código de recuperación",
@@ -554,6 +610,8 @@ export const es = {
       CATEGORY_HAS_PRODUCTS: "Esa categoría todavía tiene productos.",
       INVALID_STATUS: "No se puede hacer ese cambio en este producto.",
       INVALID_CODE: "El código no es correcto. Revisalo y probá de nuevo.",
+      WEAK_PASSWORD:
+        "La contraseña necesita al menos 12 caracteres, 3 tipos (mayúsculas, minúsculas, números, símbolos) y sin palabras comunes.",
       STORE_ALREADY_CLAIMED: "Esta tienda ya tiene dueña o dueño. Si sos vos, entrá con tu passkey.",
       CHALLENGE_EXPIRED: "Pasó demasiado tiempo. Probá de nuevo.",
       PASSKEY_NOT_VERIFIED: "No pudimos verificar tu passkey. Probá de nuevo.",
@@ -568,6 +626,8 @@ export const es = {
       INVALID_TRANSFER: "Revisá el alias o CBU/CVU y el nombre del titular.",
       INVALID_STEP: "Ese paso todavía no se puede hacer. Volvé a la pantalla anterior.",
       INVALID_LANGUAGE: "Elegí español, inglés o portugués.",
+      DESCRIPTION_TOO_LONG: "La frase de tu tienda puede tener hasta 200 caracteres.",
+      INVALID_BRAND_COLOR: "Elegí uno de los colores de la lista.",
       GITHUB_NOT_CONNECTED: "Primero conectá tu tienda con GitHub.",
       GITHUB_NOT_RESPONDING: "GitHub no respondió. Probá de nuevo en un rato.",
       GITHUB_MULTIPLE_REPOSITORIES:

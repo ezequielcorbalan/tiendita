@@ -25,6 +25,8 @@ export type ErrorCode =
   | "INVALID_TRANSFER"
   | "INVALID_STEP"
   | "INVALID_LANGUAGE"
+  | "DESCRIPTION_TOO_LONG"
+  | "INVALID_BRAND_COLOR"
   | "GITHUB_NOT_CONNECTED"
   | "GITHUB_NOT_RESPONDING"
   | "GITHUB_MULTIPLE_REPOSITORIES"
@@ -43,7 +45,8 @@ export type ErrorCode =
   | "R2_ALREADY_SET"
   | "ORDER_NOT_FOUND"
   | "INVALID_TRANSITION"
-  | "INVALID_ORDER";
+  | "INVALID_ORDER"
+  | "WEAK_PASSWORD";
 
 export type DomainError = {
   readonly code: ErrorCode;
