@@ -24,8 +24,21 @@ export const en: Texts = {
     remove: "Remove",
     total: "Total",
     yourName: "Your name",
+    address: "Delivery address (optional)",
+    addressPlaceholder: "Street, number, floor or doorbell",
     note: "Note for the store (optional)",
     notePlaceholder: "For example: I'll pick it up on Saturday",
+    when: "When do you want it?",
+    whenNow: "As soon as possible",
+    whenLater: "In advance",
+    date: "Date",
+    time: "Time",
+    howToGet: "How do you get it?",
+    delivery: "Home delivery",
+    pickup: "Pickup at the shop",
+    msgScheduled: (when: string, how: string) => `In advance: ${when} — ${how}`,
+    invalidWhen: "Pick a date from today up to a year from now.",
+    addressForDelivery: "For a delivery, write the delivery address.",
     payWith: "How will you pay?",
     payTransfer: "Bank transfer",
     payAgree: "We'll sort it out on WhatsApp",
@@ -47,6 +60,7 @@ export const en: Texts = {
     msgGreeting: "Hi! I'd like to place this order:",
     msgEach: "each",
     msgName: "Name",
+    msgAddress: "Address",
     msgPayment: "Payment",
     msgNote: "Note",
     msgTransfer: "bank transfer (I'll send you the receipt)",
@@ -74,6 +88,9 @@ export const en: Texts = {
     moreCategories: (n: number) => `See all ${n} categories`,
     fewerCategories: "See fewer categories",
     from: "From",
+    addShort: "Add",
+    choose: "Choose",
+    quantityOf: (name: string) => `Quantity of ${name}`,
     howToBuy: "How to buy",
     buyWhatsapp: "Order on WhatsApp",
     buyWhatsappText: "Build your cart and the order arrives ready to send.",
@@ -112,6 +129,10 @@ export const en: Texts = {
       "Then you'll create your passkey (you sign in with your phone's fingerprint, face or PIN, no password), choose your store's name and language, and add your WhatsApp number. It's five short screens.",
     instructionsHtml:
       'The full instructions are in the <code>README.md</code> file in your repository. You can see the resources that were created in your <a href="https://dash.cloudflare.com/">Cloudflare dashboard</a>.',
+    hostedDescription: "Your tiendita is live",
+    hostedIntro: "We host it for you at tutiendita: no accounts to create and nothing to install.",
+    hostedClaimHtml:
+      "So nobody else can take it over, the first time you sign in we ask for the <strong>claim code</strong> we emailed you.",
   },
   whereIsTheCode: {
     stepsHtml: [
@@ -122,6 +143,8 @@ export const en: Texts = {
     ],
     noteHtml:
       "Only people with access to your Cloudflare account can see that log, so nobody else can take over your store. Every time the store is published again a new code is generated: use the latest one. If you're trying it on your computer (<code>npm run dev</code>), the code shows up in the terminal.",
+    hostedHtml:
+      "Look for the email from <strong>tutiendita</strong> that says «Your store is ready» (if you don't see it, check your spam folder). Copy the code with the dashes: six groups like <code>XXXX-XXXX-XXXX-XXXX-XXXX-XXXX</code>. It works only once.",
   },
   panel: {
     stepOf: (n: number) => `Step ${n} of 5`,
@@ -161,6 +184,8 @@ export const en: Texts = {
     button: "Continue",
     emergency:
       "If you lost both your device and the code, the only way back is the emergency plan in your repository's README: whoever has the Cloudflare account deletes the access from the database and deploys the store again to claim it with a new code. Your products are kept.",
+    hostedEmergency:
+      "If you lost both your device and the code, write to hola@tutiendita.ar from the email you used to ask for the store. Your products are kept.",
   },
   access: {
     title: "Access",
@@ -203,6 +228,7 @@ export const en: Texts = {
     publishedCount: "published products",
     unpublishedCount: "not published (drafts or paused)",
     viewProducts: "See my products",
+    upcomingScheduled: "in advance, next 7 days",
     pendingSales: "sales to handle",
     viewSales: "View my sales",
     insightsTitle: "Insights",
@@ -241,6 +267,11 @@ export const en: Texts = {
     identitySave: "Save",
     languageTitle: "Language",
     saveLanguage: "Save language",
+    advanceTitle: "Advance orders",
+    advanceIntro:
+      "In the cart, your customers choose whether they want it as soon as possible or for a date and time, delivered or picked up. You see them apart in Sales.",
+    advanceLabel: "Take advance orders",
+    saveAdvance: "Save",
     heartbeatTitle: "Active stores",
     heartbeatIntro:
       "Once a day your store tells tutiendita.ar its address so active stores can be counted. Nothing else is sent: no sales, no products, no customer data.",
@@ -249,6 +280,8 @@ export const en: Texts = {
     domainTitle: "Your domain",
     domainIntro:
       "Your store can live at an address of your own, like shop.yourbusiness.com, instead of the workers.dev one.",
+    hostedDomain: (host: string) =>
+      `Your store is at ${host}, the address tutiendita gave you. Connecting your own domain isn't available on the hosted plan yet.`,
     githubNeeded:
       "To connect a domain, first connect your store to GitHub in Updates: that's how the store saves the change in its own code and Cloudflare publishes it again.",
     goToUpdates: "Go to Updates",
@@ -368,6 +401,28 @@ export const en: Texts = {
     proLink: "turn on professional photos",
   },
   panelSales: {
+    filterAll: "All",
+    filterScheduled: "In advance",
+    filterCalendar: "Calendar",
+    calendarSummary: (name: string, how: string) => `Order from ${name} — ${how}`,
+    addToGoogle: "Add to Google Calendar",
+    calendarTitle: "Advance orders calendar",
+    prevMonth: "Previous month",
+    nextMonth: "Next month",
+    noneThisMonth: "No advance orders this month.",
+    googleTitle: "Google Calendar",
+    googleIntro:
+      "Connect it once and advance orders show up in your calendar by themselves. Google brings new ones on its own, but it can take a few hours: for something urgent, use “Add to Google Calendar” on each order.",
+    connect: "Connect Google Calendar",
+    copyLink: "Copy link",
+    copied: "Copied",
+    rotateLink: "Change link",
+    confirmRotate:
+      "The old link stops working: remove that calendar in Google (it stays frozen) and connect again. Go ahead?",
+    linkHelp: "It also works with Apple Calendar or Outlook: add a calendar from a URL and paste the link.",
+    noneScheduled: "No advance orders yet.",
+    scheduledFor: (when: string, how: string) => `For ${when} · ${how}`,
+    fulfillmentNames: { envio: "Delivery", retiro: "Pickup" },
     title: "Sales",
     intro: "The orders your customers send you on WhatsApp. Mark each sale as it moves along.",
     none: "You don't have sales yet. When someone sends you an order, it shows up here.",
@@ -375,6 +430,7 @@ export const en: Texts = {
     buyer: "Customer",
     payment: "Payment",
     note: "Note",
+    address: "Address",
     total: "Total",
     updatedAt: "Updated",
     paymentNames: { transferencia: "Bank transfer", whatsapp: "To be arranged on WhatsApp" },
@@ -563,6 +619,12 @@ export const en: Texts = {
     apply: "Update my store",
     applied: "Done! Cloudflare is publishing the new version. You'll see it on your store in a few minutes.",
     errorStatus: "We couldn't reach GitHub. Please try again in a little while.",
+    hostedIntro:
+      "tutiendita hosts and looks after your store. When there's a new version you get it with one button: nothing changes unless you approve it.",
+    hostedUpdate: "Update my store",
+    hostedRequested:
+      "Done! We're publishing the new version. In a minute or two reload the page and you'll see it.",
+    hostedErrorStatus: "We couldn't check for a new version. Please try again in a little while.",
     securityTitle: "Security update",
     securityText: (v: string) =>
       `Version ${v} fixes a security problem. Update your store as soon as you can.`,
@@ -586,6 +648,7 @@ export const en: Texts = {
       TOO_MANY_IMAGES: "A product can have up to 8 photos.",
       IMAGE_QUOTA_REACHED:
         "You reached the 200 photos of basic mode. Turn on Professional photos, no limit in Settings to keep uploading.",
+      PRODUCT_LIMIT_REACHED: "You reached the product limit of your plan. Delete one to create a new one.",
       PRO_REQUIRED:
         "To add more photos or a photo per option, turn on Professional photos, no limit in Settings.",
       R2_ALREADY_SET:
@@ -620,6 +683,7 @@ export const en: Texts = {
       INVALID_BRAND_COLOR: "Pick one of the colours in the list.",
       GITHUB_NOT_CONNECTED: "First connect your store to GitHub.",
       GITHUB_NOT_RESPONDING: "GitHub didn't respond. Please try again in a little while.",
+      HOSTING_NOT_RESPONDING: "tutiendita didn't respond. Please try again in a little while.",
       GITHUB_MULTIPLE_REPOSITORIES:
         "The app has access to more than one repository. On GitHub, give it access only to your store's repository and try again.",
       INVALID_CART: "Check the cart: it needs 1 to 50 products, 1 to 99 units each.",
