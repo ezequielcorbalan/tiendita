@@ -6,7 +6,7 @@ Sua loja online, funcionando na **sua própria conta da Cloudflare**, com um ún
 
 **Loja online grátis e de código aberto para pequenos negócios**, na sua própria conta da Cloudflare (Workers e D1): catálogo com fotos (até 8 por produto e uma por opção, com R2 conectado), categorias e variações, carrinho que envia o pedido pelo WhatsApp (cada pedido fica guardado na seção Vendas do painel, onde você marca como pago e entregue), pagamento por transferência, páginas prontas para o Google (sitemap, Open Graph, schema.org Product) e um painel com passkeys. Sem comissão nas vendas e seus dados são seus.
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/ezequielcorbalan/tutiendita)
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/ezequiel-corbalan/tutiendita)
 
 ## Como instalar
 
@@ -77,6 +77,7 @@ Este repo é uma cópia autocontida da loja do monorepo do **tutiendita** (`apps
 npm ci                        # dependencias
 npm run dev                   # migrações locais + Astro + wrangler em http://localhost:4321, loja já pronta
 npm run build                 # build de producción (dist/)
+npm test                      # todos los tests (node --test, build de prueba y Vitest); el CI los corre en cada PR
 npm run deploy                # crea la D1 si falta + migraciones remotas + wrangler deploy (lo que corre Cloudflare)
 ```
 

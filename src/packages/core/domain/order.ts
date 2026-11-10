@@ -1,6 +1,7 @@
 import { type DomainError, domainError } from "./errors";
 import { add, type Money, multiply } from "./money";
 import { err, ok, type Result } from "./result";
+import type { ScheduledDelivery } from "./schedule";
 
 // Stored in D1: values stay in Spanish (new, contacted, paid, delivered, cancelled).
 export const ORDER_STATUSES = ["nuevo", "contactado", "pagado", "entregado", "cancelado"] as const; // tuple: zod's z.enum needs it
@@ -24,11 +25,14 @@ export type OrderItem = {
 export type Order = {
   readonly id: string;
   readonly items: readonly OrderItem[];
-  readonly buyer: { readonly name: string };
+  /** `address` is "" when the buyer left it blank (pickup, or agreed on WhatsApp). */
+  readonly buyer: { readonly name: string; readonly address: string };
   readonly paymentMethod: OrderPaymentMethod;
   readonly total: Money;
   readonly status: OrderStatus;
   readonly note: string;
+  /** Absent: as soon as possible. */
+  readonly scheduled?: ScheduledDelivery;
   readonly createdByAgent: boolean;
   readonly createdAt: Date;
   readonly updatedAt: Date;
